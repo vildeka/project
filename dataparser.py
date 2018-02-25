@@ -1,5 +1,6 @@
 #===================parser========================
 import pandas as pd
+import numpy as np
 def parse_fasta(filename):
     parse_dict = {}
     #sequence = ""
@@ -26,9 +27,25 @@ def parse_fasta(filename):
 #make panda into numpy: df.values
 
 #=========================input vectors (topology)==============
-'''def input_topo(parse_dict):
-    topology = []
-    val = parse_dict.values()
+def input_topo(parse_dict):
+    protein = []
+
+    topo_dict = parse_fasta("dataminix2.txt")
+    #val = topo_dict.values()
+    topo = {'H':1, 'S':2, 'C':3}
+    #print(val)
+
+    for val in topo_dict.values():
+        topology = np.empty((0,), int)
+        #print(topology)
+        for s in val[1]:
+            topology = np.append(topology, np.array([[topo[s]]], axis=0)
+        #protein.append(topology)
+    print(topology)
+
+#https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html
+# https://stackoverflow.com/questions/22392497/how-to-add-a-new-row-to-an-empty-numpy-array
+'''
     print("------------------------------------------------------------")
     for val in parse_dict.values():
             for l in val:
@@ -40,7 +57,7 @@ def parse_fasta(filename):
                     topology.append(3)
         print (val[1])'''
 #=========================input vectors (words)==============
-'''import numpy as np
+'''
 def input_words(parse_dict):
 
     vals = np.identity(20, dtype=int)
@@ -96,6 +113,6 @@ if __name__ == '__main__':
     result_FASTA = parse_fasta("datamini.txt")
     print (result_FASTA)
 
-    #result_topo = input_topo("parse_fasta(filename)")
+    result_topo = input_topo("parse_fasta(filename)")
 
-    result_words = input_words("parse_fasta(filename)")
+    #result_words = input_words("parse_fasta(filename)")
