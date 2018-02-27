@@ -25,7 +25,7 @@ def parse_fasta(filename):
 
 #================input vectors (words/features and topology)==============
 
-def input_words(seq_dict, window=3):
+def input_vectors(seq_dict, window=3):
     padding = window//2
     
     # dictionary of aa:
@@ -44,41 +44,31 @@ def input_words(seq_dict, window=3):
     topologies = []
     features = []
     
-    for sequence, topology in seq_dict.values(): # put on later to make it go through all seqyences, 
+    for sequence, topology in seq_dict.values(): 
         for i in range(len(sequence)):
             topologies.append(topo[topology[i]])
-            if i > padding and i < len(sequence) - padding - 1: #-1 because you want second to last element 
-                word_seq.append(sequence[i-padding:i+padding+1])#+1 is to get the last element as well [icluded:notincluded]
+            if i > padding and i < len(sequence) - padding - 1:
+                 #-1 because you want second to last element 
+                word_seq.append(sequence[i-padding:i+padding+1])
+                  #+1 is to get the last element as well [icluded:notincluded]
             elif i <= padding:
                 # head
-                print(i)
                 this_word = sequence[:i + padding + 1] #[:2] = PT, [:3]= PTV
                 zeros_needed = window - len(this_word)
                 word_seq.append('0' * zeros_needed + this_word)
-                print(this_word)
+
             else:
                 # tail
-                print(i)
                 this_word = sequence[i-1:] #[43-1:]= ASC, [44-1]= SC
                 zeros_needed = window - len(this_word)
                 word_seq.append(this_word+'0' * zeros_needed)
-                print(this_word)
-            
-            
-             
-    print(word_seq)
-    print(topologies)
-    words2 = []
-    
-    
+
+
     for word in word_seq:    
-        words2.append(list(map(lambda n: aa_dict[n], word)))    
-        #words[word] = list(map(lambda n: aa_dict[n], word))    
-        
-        for v in words2:
-            b = np.concatenate(v)
-            features.append(b)
-    print(features)
+        this_word = list(map(lambda n: aa_dict[n], word))    
+        features.append(np.concatenate(this_word))
+
+    return np.array(features), np.array(topologies)
       
 #=========================One-hot encoding==============
 # useless shit:
