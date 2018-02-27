@@ -17,66 +17,36 @@ def parse_fasta(filename):
                 #newA = [for i in A ]
                 parse_dict[key] = [A, B]
 
-    #print (parse_dict)
-
-#makes the dictionary into a panda
-    df = pd.DataFrame.from_dict(parse_dict, orient = 'index')
-    df.columns = ['sequence', 'topology']
     return (parse_dict)
 
 #make panda into numpy: df.values
 
-#=========================input vectors (topology)==============
-def input_topo(parse_dict):
-    protein = []
-
-    topo_dict = parse_fasta("dataminix2.txt")
-    #val = topo_dict.values()
-    topo = {'H':1, 'S':2, 'C':3}
-    #print(val)
-    
-       
-    for val in topo_dict.values():
-        topology = []                  
-        for s in val[1]:
-            topology.append(topo[s])
-        
-        protein.append(topology)
-    print(protein)
 
 
-#https://docs.scipy.org/doc/numpy/reference/generated/numpy.concatenate.html
-# https://stackoverflow.com/questions/22392497/how-to-add-a-new-row-to-an-empty-numpy-array
+#================input vectors (words/features and topology)==============
 
-#=========================input vectors (words)==============
-
-def input_words(parse_dict):
-
-    vals = np.identity(20, dtype=int)
-    keys = list("ACDEFGHIKLMNPQRSTVWY")
-    #print(keys)
-    aa_dict = dict(zip(keys, vals.T))
-    aa_dict['0'] = np.zeros(20, dtype=int)
-    #print(aa_dict)
-    
-    
-    
-    words= {}
-    seq_dict = parse_fasta("dataminix2.txt")
-    values = list(seq_dict.values())
-    
-    seq_list = []
-    for l in values:
-        seq_list.append(l[0])
-    print (seq_list)
-   
-   
-    window = 3
+def input_words(seq_dict, window=3):
     padding = window//2
     
+    # dictionary of aa:
+    vals = np.identity(20, dtype=int)
+    keys = list("ACDEFGHIKLMNPQRSTVWY")
+    aa_dict = dict(zip(keys, vals.T))
+    aa_dict['0'] = np.zeros(20, dtype=int)
+    
+    # dictionary of topology:
+    topo = {'H':1, 'S':2, 'C':3}
+    
+    #list of words:
     word_seq = []
-    for sequence in seq_list: # put on later to make it go throu all seqyences, messing up the rest of the code. look at 0 in word_seq
+    
+    #final input:
+    topologies = []
+    features = []
+    
+    for sequence, topology in seq_dict.values(): # put on later to make it go through all seqyences, 
         for i in range(len(sequence)):
+            topologies.append(topo[topology[i]])
             if i > padding and i < len(sequence) - padding - 1: #-1 because you want second to last element 
                 word_seq.append(sequence[i-padding:i+padding+1])#+1 is to get the last element as well [icluded:notincluded]
             elif i <= padding:
@@ -93,20 +63,23 @@ def input_words(parse_dict):
                 zeros_needed = window - len(this_word)
                 word_seq.append(this_word+'0' * zeros_needed)
                 print(this_word)
-        
-        print(word_seq)
-    
+            
+            
+             
+    print(word_seq)
+    print(topologies)
     words2 = []
     
+    
     for word in word_seq:    
-        words[word] = list(map(lambda n: aa_dict[n], word))    
-        x = []
-        for v in words.values():
+        words2.append(list(map(lambda n: aa_dict[n], word)))    
+        #words[word] = list(map(lambda n: aa_dict[n], word))    
+        
+        for v in words2:
             b = np.concatenate(v)
-            x.append(b)
-        #print(x)
-        words2.append(x)
-    print(words2)
+            features.append(b)
+    print(features)
+      
 #=========================One-hot encoding==============
 # useless shit:
 '''from numpy import argmax
@@ -145,6 +118,5 @@ if __name__ == '__main__':
     result_FASTA = parse_fasta("dataminix2.txt")
     print (result_FASTA)
 
-    result_topo = input_topo("parse_fasta(filename)")
 
-    result_words = input_words("parse_fasta(filename)")
+    result_words = input_words(parse_fasta("dataminix2.txt"))
