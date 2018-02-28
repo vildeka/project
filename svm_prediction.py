@@ -20,10 +20,11 @@ topology = []
 for element in result:
     topology.append(topo[element])
 
-print(topology)
+str_topo = "".join(topology)
+print(str_topo)
 
-l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
+#l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
 
-l = list['CCHHHHHHHHHCCCCCCCCCCCCCSSSCCCSSS']
+#l = list['CCHHHHHHHHHCCCCCCCCCCCCCSSSCCCSSS']
 
-l = list['CSSSSSSCCCHHHHHHHHHHHHCCCCSSSSSSSCC']
+#l = list['CSSSSSSCCCHHHHHHHHHHHHCCCCSSSSSSSCC']
