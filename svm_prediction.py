@@ -10,21 +10,27 @@ from FASTA_to_inputvectorX import FASTA_to_inputvectorX, parse_fasta
 # load the model from disk
 model = pickle.load(open("first_model.sav", 'rb'))
 
-
 #prediction:
 result = model.predict(FASTA_to_inputvectorX(parse_fasta("FASTAfile.txt")))
 print(result)
 
-topo = {1:'H', 2:'S', 3:'C'}
-topology = []
-for element in result:
-    topology.append(topo[element])
+#converting predicted states from int to str:
+def output_to_topo(result):
+    topo = {1:'H', 2:'S', 3:'C'}
+    topology = []
+    for element in result:
+        topology.append(topo[element])
 
-str_topo = "".join(topology)
-print(str_topo)
+        str_topo = "".join(topology)
+    return str_topo
+
 
 #l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
 
 #l = list['CCHHHHHHHHHCCCCCCCCCCCCCSSSCCCSSS']
 
 #l = list['CSSSSSSCCCHHHHHHHHHHHHCCCCSSSSSSSCC']
+
+if __name__ == '__main__':
+    result_svm = output_to_topo(result)
+    print (result_svm)
