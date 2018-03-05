@@ -1,15 +1,14 @@
-import pandas as pd
 from sklearn import svm
 #from sklearn.model_selection import train_test_split
-from matplotlib import pyplot as plt
 import pickle
 
 from dataparser import parse_fasta, train_inputvector_X, inputvector_y
 
-#X, y = input_vectors(parse_fasta('../project/data.txt'))
+#X = train_inputvector_X(parse_fasta('../project/data.txt'))
+#y = inputvector_y(parse_fasta('../project/data.txt'), window=3)
 
-X = train_inputvector_X(parse_fasta("dataminix2.txt"))
-y = inputvector_y(parse_fasta("dataminix2.txt"), window=3)
+X = train_inputvector_X(parse_fasta('../project/dataminix2.txt'))
+y = inputvector_y(parse_fasta('../project/dataminix2.txt'), window=3)
 
 print(X.shape)
 #create model and give other than dtype: 
