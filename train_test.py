@@ -4,10 +4,12 @@ from sklearn import svm
 from matplotlib import pyplot as plt
 import pickle
 
-from dataparser import input_vectors, parse_fasta
+from dataparser import parse_fasta, train_inputvector_X, inputvector_y
 
 #X, y = input_vectors(parse_fasta('../project/data.txt'))
-X, y = input_vectors(parse_fasta("datamini.txt"))
+
+X = train_inputvector_X(parse_fasta("dataminix2.txt"))
+y = inputvector_y(parse_fasta("dataminix2.txt"), window=3)
 
 print(X.shape)
 #create model and give other than dtype: 
@@ -18,7 +20,7 @@ accuracy = model.score(X, y)
 print(accuracy)
 
 #using pickle to save model to disk:
-filename = "first_model.sav"
+filename = "minix2_model.sav"
 pickle.dump(model, open(filename, 'wb'))
 
 
