@@ -2,10 +2,10 @@
 Make a 3-state predictor. 
 
 
-*Script description*
-**dataparser.py**
-This cointain four functions:
-`def parse_fasta(filename):`
+*Script description*<p>
+**dataparser.py**<p>
+This cointain four functions:<p>
+`def parse_fasta(filename):`<p>
 #writes the dataset for traning into a dictionary called `parse_dict` with id as key and [sequence, topology] as value. Removes \n and >
 `def inputvector_X(sequence, window=7):`
 #Takes one string of amino acids at a time, and creates windows that are encoded into binary and finaly converted to numpy array. The shape is in form of (window, nr of windows) where (row, colum) 
