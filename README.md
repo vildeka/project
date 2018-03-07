@@ -19,25 +19,25 @@ This cointain four functions:<br/>
 
 
 **train_test.py**<br/>
-#imports the X_vector and the y_vector from the dataparser.py file
+#imports the X_vector and the y_vector from the dataparser.py file<br/>
 #trains the model with deafult parameter except for 'one vs one'
 #saves the model with pickle 
 
 **cross_validation**<br/>
-#imports the X_vector and the y_vector from the dataparser.py file
-#for loop, that does fivefold cross validation for every second windowsizes in range 3-20
+#imports the X_vector and the y_vector from the dataparser.py file<br/>
+#for loop, that does fivefold cross validation for every second windowsizes in range 3-20<br/>
 #stores the result in dictionary. With windowsize as key and the 5 scores as value. 
  
 **FASTA_to_inputvector.py**<br/>
-`def parse_fasta(filename):<br/>`
+`def parse_fasta(filename):`<br/>
 #write FASTA file for prediction into a dictionary called `seq_dict` with id as key and [sequence] as value. Removes \n and ><br/>
-`def inputvector_X(sequence, window=7):`
+`def inputvector_X(sequence, window=7):`<br/>
 #is the same function as in dataparser.py. 
 
 **svm_prediction.py**<br/>
 #imports the function inputvector_X() and parse_fasta() from FASTA_to_inputvector
 #loades in the models saved with pickle
-#runs the prediction on the X_vector created by inputvector_X()
+#runs the prediction on the X_vector created by inputvector_X()<br/>
 #Converts the prediction from intergears to string (H, S, C).
 
 *Datset description*<br/>
