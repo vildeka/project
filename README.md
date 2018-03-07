@@ -18,23 +18,23 @@ This cointain four functions:<br/>
 #this is the final y_vector that is used for traning 
 
 
-**train_test.py**
+**train_test.py**<br/>
 #imports the X_vector and the y_vector from the dataparser.py file
 #trains the model with deafult parameter except for 'one vs one'
 #saves the model with pickle 
 
-**cross_validation**
+**cross_validation**<br/>
 #imports the X_vector and the y_vector from the dataparser.py file
 #for loop, that does fivefold cross validation for every second windowsizes in range 3-20
 #stores the result in dictionary. With windowsize as key and the 5 scores as value. 
  
-**FASTA_to_inputvector.py**
+**FASTA_to_inputvector.py**<br/>
 `def parse_fasta(filename):`
 #write FASTA file for prediction into a dictionary called `seq_dict` with id as key and [sequence] as value. Removes \n and >
 `def inputvector_X(sequence, window=7):`
 #is the same function as in dataparser.py. 
 
-**svm_prediction.py**
+**svm_prediction.py**<br/>
 #imports the function inputvector_X() and parse_fasta() from FASTA_to_inputvector
 #loades in the models saved with pickle
 #runs the prediction on the X_vector created by inputvector_X()
@@ -42,11 +42,11 @@ This cointain four functions:<br/>
 
 *Datset description*
 I have 3 training datsets in my datset folder: data.txt, datamini.txt, dataminix2.txt 
-**data.txt** 
+**data.txt** <br/>
 is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets. 
-**datamini.txt** 
+**datamini.txt** <br/>
 is the one I have used for training the model and doing the cross-validation. 
-**dataminix2.txt**
+**dataminix2.txt**<br/>
 The last dataset called dataminix2.txt is very small containing only 3 sequences. It was used to for easy readabilety when making the scripts. 
 
 
