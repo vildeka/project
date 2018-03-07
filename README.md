@@ -7,14 +7,14 @@ Make a 3-state predictor.
 This cointain four functions:<br/>
 `def parse_fasta(filename):`<br/>
 #writes the dataset for traning into a dictionary called `parse_dict` with id as key and [sequence, topology] as value. Removes \n and >
-`def inputvector_X(sequence, window=7):`
-#Takes one string of amino acids at a time, and creates windows that are encoded into binary and finaly converted to numpy array. The shape is in form of (window, nr of windows) where (row, colum) 
-#Each numpy array representing one protein 
-`def train_inputvector_X(parse_dict):`
-#loopes over the dictionary `parse_dict` and extracts only the sequence to feeds it into the `def inputvector_X(sequence, window=7):`. each of the numpy arrays created from that function extended into a list called X_vector, so that you get a list of arrays. this list is finaly created into a numpy array.
-#this is the final X_vector that is used for traning 
-`def inputvector_y(parse_dict):`
-#loopes over the dictionary `parse_dict` and extracts only the topology and encodes it into intergears. Appends them inot a list calle y_vector and turns it into a numpy array. 
+`def inputvector_X(sequence, window=7):`<br/>
+#Takes one string of amino acids at a time, and creates windows that are encoded into binary and finaly converted to numpy array.<br/> The shape is in form of (window, nr of windows) where (row, colum)<br/> 
+#Each numpy array representing one protein <p>
+`def train_inputvector_X(parse_dict):`<br/>
+#loopes over the dictionary `parse_dict` and extracts only the sequence to feeds it into the `def inputvector_X(sequence, window=7):`. each of the numpy arrays created from that function extended into a list called X_vector, so that you get a list of arrays. this list is finaly created into a numpy array.<br/>
+#this is the final X_vector that is used for traning <br/>
+`def inputvector_y(parse_dict):`<br/>
+#loopes over the dictionary `parse_dict` and extracts only the topology and encodes it into intergears. Appends them inot a list calle y_vector and turns it into a numpy array.<br/> 
 #this is the final y_vector that is used for traning 
 
 
