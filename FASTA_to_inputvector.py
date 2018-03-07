@@ -14,7 +14,7 @@ def parse_fasta(filename):
     return(seq_dict)
     
 
-def inputvector_X(sequence, window=3): #identical to def inputvector_X(sequence, window=3):
+def inputvector_X(sequence, window=7): #identical to def inputvector_X(sequence, window=3):
     padding = window//2
     
     # dictionary of aa:
@@ -56,8 +56,8 @@ def inputvector_X(sequence, window=3): #identical to def inputvector_X(sequence,
 
 
 if __name__ == '__main__':
-    result_FASTA = parse_fasta("FASTAfile.txt")
+    result_FASTA = parse_fasta('../project/datasets/FASTAfilemini.fasta')
     print (result_FASTA)
     
-    result_FASTA = FASTA_to_inputvectorX(parse_fasta("FASTAfile.txt"))
+    result_FASTA = FASTA_to_inputvectorX(parse_fasta('../project/datasets/FASTAfilemini.fasta'))
     #print (result_FASTA)

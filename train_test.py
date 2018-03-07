@@ -4,11 +4,11 @@ import pickle
 
 from dataparser import parse_fasta, train_inputvector_X, inputvector_y
 
-#X = train_inputvector_X(parse_fasta('../project/data.txt'))
-#y = inputvector_y(parse_fasta('../project/data.txt'), window=3)
+X = train_inputvector_X(parse_fasta('../project/datasets/data.txt'))
+y = inputvector_y(parse_fasta('../project/datasets/data.txt'))
 
-X = train_inputvector_X(parse_fasta('../project/dataminix2.txt'))
-y = inputvector_y(parse_fasta('../project/dataminix2.txt'), window=3)
+#X = train_inputvector_X(parse_fasta('../project/datasets/datamini.txt'))
+#y = inputvector_y(parse_fasta('../project/datasets/datamini.txt'))
 
 print(X.shape)
 #create model and give other than dtype: 
@@ -19,13 +19,18 @@ accuracy = model.score(X, y)
 print(accuracy)
 
 #using pickle to save model to disk:
-filename = "minix2_model.sav"
+filename = '../project/models/whole_dataset_model.sav'
 pickle.dump(model, open(filename, 'wb'))
 
 
 
 
-
+if __name__ == '__main__':    
+    result_train_X = train_inputvector_X(parse_fasta('../project/datasets/data.txt'))
+    #print (result_train_X)
+    
+    result_y = inputvector_y(parse_fasta('../project/datasets/data.txt'))
+    #print (result_y)
 
 
 

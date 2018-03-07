@@ -5,10 +5,10 @@ import pylab as plt
 
 from dataparser import parse_fasta, inputvector_X, inputvector_y
 
-# X = train_inputvector_X(parse_fasta('../project/datamini.txt'))
-# y = inputvector_y(parse_fasta('../project/datamini.txt'), )
-x_data = parse_fasta('../project/datamini.txt')
-y = inputvector_y(parse_fasta('../project/datamini.txt'))
+#X = train_inputvector_X(parse_fasta('../project/datasets/data.txt'))
+#y = inputvector_y(parse_fasta('../project/datasets/data.txt'), )
+x_data = parse_fasta('../project/datasets/data.txt')
+y = inputvector_y(parse_fasta('../project/datasets/data.txt'))
 
 results = dict()
 result_average = dict()
