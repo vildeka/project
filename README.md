@@ -35,7 +35,7 @@ This cointain four functions:<br/>
 #is the same function as in dataparser.py. 
 
 **svm_prediction.py**<br/>
-#imports the function inputvector_X() and parse_fasta() from FASTA_to_inputvector
+#imports the function inputvector_X() and parse_fasta() from FASTA_to_inputvector<br/>
 #loades in the models saved with pickle
 #runs the prediction on the X_vector created by inputvector_X()<br/>
 #Converts the prediction from intergears to string (H, S, C).
