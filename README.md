@@ -43,9 +43,9 @@ This cointain four functions:<br/>
 *Datset description*<br/>
 I have 3 training datsets in my datset folder: data.txt, datamini.txt, dataminix2.txt<br/> 
 **data.txt** <br/>
-is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets. 
+is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets.<br/> 
 **datamini.txt** <br/>
-is the one I have used for training the model and doing the cross-validation. 
+is the one I have used for training the model and doing the cross-validation.<br/> 
 **dataminix2.txt**<br/>
 The last dataset called dataminix2.txt is very small containing only 3 sequences. It was used to for easy readabilety when making the scripts. 
 
