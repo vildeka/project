@@ -40,7 +40,7 @@ This cointain four functions:<br/>
 #runs the prediction on the X_vector created by inputvector_X()
 #Converts the prediction from intergears to string (H, S, C).
 
-*Datset description*
+*Datset description*<br/>
 I have 3 training datsets in my datset folder: data.txt, datamini.txt, dataminix2.txt 
 **data.txt** <br/>
 is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets. 
