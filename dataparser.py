@@ -25,6 +25,7 @@ def parse_fasta(filename):
 def inputvector_X(sequence, window=3):
     padding = window//2
     
+    
     # dictionary of aa:
     vals = np.identity(20, dtype=int)
     keys = list("ACDEFGHIKLMNPQRSTVWY")
@@ -70,7 +71,7 @@ def train_inputvector_X(parse_dict):
    
 #================input vector topology==============    
     
-def inputvector_y(parse_dict, window=3): 
+def inputvector_y(parse_dict): 
     # dictionary of topology:
     topo = {'H':1, 'S':2, 'C':3}
     

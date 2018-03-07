@@ -1,9 +1,8 @@
-import pandas as pd
 from sklearn import svm
 #from sklearn.model_selection import train_test_split
 import pickle
 
-from FASTA_to_inputvectors import inputvector_X, parse_fasta
+from FASTA_to_inputvector import inputvector_X, parse_fasta
 
 
 # load the model from disk
@@ -24,17 +23,20 @@ result_X = []
 #dictionary of identifiers and sequences:
 prot_dict = parse_fasta("FASTAfile.txt")
 
+writefile = open("prediction_output.fasta", "w")
 for key in prot_dict:
-    print(key)
-    print(prot_dict[key])
-    x_input = list(FASTA_to_Xvector(prot_dict[key]))
+    #print(key)
+    #print(prot_dict[key])
+    x_input = list(inputvector_X(prot_dict[key]))
     result = model.predict(x_input)
     result_X.append(result)
     topo = output_to_topo(result_X)
-    print(topo)
-
-
-
+    #print(topo)
+    writefile.write(key + "\n")
+    writefile.write(prot_dict[key] + "\n")
+    writefile.write(topo + "\n")
+    
+writefile.close()
 
 #l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
 
