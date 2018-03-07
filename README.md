@@ -29,8 +29,8 @@ This cointain four functions:<br/>
 #stores the result in dictionary. With windowsize as key and the 5 scores as value. 
  
 **FASTA_to_inputvector.py**<br/>
-`def parse_fasta(filename):`
-#write FASTA file for prediction into a dictionary called `seq_dict` with id as key and [sequence] as value. Removes \n and >
+`def parse_fasta(filename):<br/>`
+#write FASTA file for prediction into a dictionary called `seq_dict` with id as key and [sequence] as value. Removes \n and ><br/>
 `def inputvector_X(sequence, window=7):`
 #is the same function as in dataparser.py. 
 
