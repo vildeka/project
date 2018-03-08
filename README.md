@@ -1,7 +1,7 @@
 # Project for MTLS
 Make a 3-state predictor. 
 
-
+http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc255
 *Script description*<br/>
 **dataparser.py**<br/>
 This cointain four functions:<br/>
