@@ -1,10 +1,10 @@
 # Project for MTLS
 Make a 3-state predictor. 
 
-## how to run my predictior:<br/>
-You should run the scipt "svm_prediction.py"
-The script extracts the "model mini_win15_model.sav"
-and runs the prediction on the file "fastafile.fasta"
+## How to run my predictior:<br/>
+You should run the scipt "svm_prediction.py"<br/>
+The script extracts the "model mini_win15_model.sav"<br/>
+and runs the prediction on the file "fastafile.fasta"<br/>
 The prediction is written into a output file called "prediction_output.fasta" which is to be found in the repository.
 
 The script is set up so that you shoulden't have to do anything but clone the repository and run the "svm_prediction.py" script.
