@@ -2,7 +2,8 @@
 Make a 3-state predictor. 
 
 http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc255
-***Script description***<br/>
+
+#*Script description*<br/>
 **dataparser.py**<br/>
 This cointain four functions:<br/>
 `def parse_fasta(filename):`<br/>
@@ -40,7 +41,7 @@ This cointain four functions:<br/>
 #runs the prediction on the X_vector created by inputvector_X()<br/>
 #Converts the prediction from intergears to string (H, S, C).
 
-***Datset description***<br/>
+#*Datset description*<br/>
 I have 3 training datsets in my datset folder: data.txt, datamini.txt, dataminix2.txt<br/> 
 **data.txt** <br/>
 is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets.<br/> 
