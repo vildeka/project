@@ -6,7 +6,7 @@ from FASTA_to_inputvector import inputvector_X, parse_fasta
 
 
 # load the model from disk
-model = pickle.load(open('../project/models/mini_model.sav', 'rb'))
+model = pickle.load(open('../project/models/mini_win15_model.sav', 'rb'))
 
 #converting predicted states from int to str:
 def output_to_topo(result_X):
@@ -21,9 +21,9 @@ def output_to_topo(result_X):
 #prediction:
 result_X = []
 #dictionary of identifiers and sequences:
-prot_dict = parse_fasta('../project/datasets/FASTAfilemini.fasta')
+prot_dict = parse_fasta('../project/datasets/FASTAfile.fasta')
 
-writefile = open("prediction_output.fasta", "w")
+writefile = open('../project/results/prediction_output.fasta', "w")
 for key in prot_dict:
     #print(key)
     #print(prot_dict[key])
@@ -35,7 +35,7 @@ for key in prot_dict:
     writefile.write(key + "\n")
     writefile.write(prot_dict[key] + "\n")
     writefile.write(topo + "\n")
-    
+
 writefile.close()
 
 #l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
@@ -46,5 +46,3 @@ writefile.close()
 
 if __name__ == '__main__':
     result_svm = output_to_topo(result)
-
-    
