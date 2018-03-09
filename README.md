@@ -1,8 +1,15 @@
 # Project for MTLS
 Make a 3-state predictor. 
 
-http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc255
-*Script description*<br/>
+## How to run my predictior:<br/>
+You should run the scipt "svm_prediction.py"<br/>
+The script extracts the "model mini_win15_model.sav"<br/>
+and runs the prediction on the file "fastafile.fasta"<br/>
+The prediction is written into a output file called "prediction_output.fasta" which is to be found in the repository.
+
+The script is set up so that you shoulden't have to do anything but clone the repository and run the "svm_prediction.py" script.
+
+## Script description:<br/>
 **dataparser.py**<br/>
 This cointain four functions:<br/>
 `def parse_fasta(filename):`<br/>
@@ -20,7 +27,7 @@ This cointain four functions:<br/>
 
 **train_test.py**<br/>
 #imports the X_vector and the y_vector from the dataparser.py file<br/>
-#trains the model with deafult parameter except for 'one vs one'
+#trains the model with deafult parameter except for 'one vs one'<br/>
 #saves the model with pickle 
 
 **cross_validation**<br/>
@@ -36,11 +43,11 @@ This cointain four functions:<br/>
 
 **svm_prediction.py**<br/>
 #imports the function inputvector_X() and parse_fasta() from FASTA_to_inputvector<br/>
-#loades in the models saved with pickle
+#loades in the models saved with pickle<br/>
 #runs the prediction on the X_vector created by inputvector_X()<br/>
 #Converts the prediction from intergears to string (H, S, C).
 
-*Datset description*<br/>
+## Datset description:<br/>
 I have 3 training datsets in my datset folder: data.txt, datamini.txt, dataminix2.txt<br/> 
 **data.txt** <br/>
 is my complete datset and contains 399 sequences. I do not recomend running that. Therfore I have created two additional datsets.<br/> 
@@ -49,4 +56,6 @@ is the one I have used for training the model and doing the cross-validation.<br
 **dataminix2.txt**<br/>
 The last dataset called dataminix2.txt is very small containing only 3 sequences. It was used to for easy readabilety when making the scripts. 
 
-
+## Note on changing windowsize:<br/>
+If you want to change the windowsize, it is important that it is change in all the three places it is beeing specified. Two places in the script dataparser.py and one place in FASTA_to_inputvector.py
+http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc255
