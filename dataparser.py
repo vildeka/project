@@ -115,14 +115,14 @@ def one_hot_encoding(filename):
 
 
 if __name__ == '__main__':
-    result_FASTA = parse_fasta('../project/datasets/data.txt')
+    result_FASTA = parse_fasta('../project/datasets/datamini.txt')
     #print (result_FASTA)
 
     #result_X = inputvector_X(sequence1, window=3))
     #print (result_X)
 
-    result_train_X = train_inputvector_X(parse_fasta('../project/datasets/data.txt'))
+    result_train_X = train_inputvector_X(parse_fasta('../project/datasets/datamini.txt'))
     #print (result_train_X)
 
-    result_y = inputvector_y(parse_fasta('../project/datasets/data.txt'))
+    result_y = inputvector_y(parse_fasta('../project/datasets/datamini.txt'))
     #print (result_y)

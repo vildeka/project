@@ -35,10 +35,12 @@ for window, scores in results.items():
 
     plt.errorbar(window, score, color='b', yerr=np.std(scores), marker='o')
 
-writefile = open('../project/results/crossval_output.txt', 'w')
 print()
 print()
 print (result_average)
+
+#saves score and plot in respective files:
+writefile = open('../project/results/crossval_output.txt', 'w')
 for k, v in sorted(result_average.items()):
     writefile.write(str(k))
     writefile.write(':')
