@@ -23,7 +23,9 @@ result_X = []
 #dictionary of identifiers and sequences:
 prot_dict = parse_fasta('../project/datasets/FASTAfile.fasta')
 
-writefile = open('../project/results/prediction_output.fasta', "w")
+
+out_file = '../project/results/prediction_output.fasta'
+writefile = open(out_file, "w")
 for key in prot_dict:
     #print(key)
     #print(prot_dict[key])
@@ -37,6 +39,10 @@ for key in prot_dict:
     writefile.write(topo + "\n")
 
 writefile.close()
+
+print ()
+print ('result is to be found in the path:', out_file)
+print ()
 
 #l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
 
