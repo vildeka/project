@@ -1,9 +1,19 @@
 from sklearn import svm
 #from sklearn.model_selection import train_test_split
 import pickle
+import sys
 
 from FASTA_to_inputvector import inputvector_X, parse_fasta
 
+
+lenght = len(sys.argv)
+if lenght == 1: 
+    print ('please specify FASTA with path as argv[1]')
+    print ('if you wish to use a test file specify ../project/datasets/FASTAfile.fasta')
+    exit(1)
+elif lenght == 2:
+    input_file = sys.argv[1]
+ 
 
 # load the model from disk
 model = pickle.load(open('../project/models/mini_win15_model.sav', 'rb'))
@@ -21,7 +31,7 @@ def output_to_topo(result_X):
 #prediction:
 result_X = []
 #dictionary of identifiers and sequences:
-prot_dict = parse_fasta('../project/datasets/FASTAfile.fasta')
+prot_dict = parse_fasta(input_file)
 
 
 out_file = '../project/results/prediction_output.fasta'
