@@ -1,8 +1,11 @@
 import os
 import numpy as np
+#=======================Info============================
+'''this file requieres two paths to work, one to specify the directory with the PSSM files and 
+one path to the file with all of the fasta sequences'''
 #===================fasta parser========================
 def parse_fasta(filename):
-#'''write FAST into a dictionary with id as key and [sequence, topology] as value. Removes \n and >'''
+#write FAST into a dictionary with id as key and [sequence, topology] as value. Removes \n and >
     parse_dict = {}
     with open(filename, 'r') as f:
         f2 = [l for l in (line.strip() for line in f) if l]
@@ -63,8 +66,8 @@ def PSSM_X_vector(PSSM_format, window=15):
     return np.array(features)
     #print (np.array(features.shape)
 
-def train_inputvector_X(directory):
-    parse_dict = parse_fasta('datasets/PSSM_files/test_PSSM/PSSM_test.fasta')
+def train_inputvector_X(filename, directory):
+    parse_dict = parse_fasta(filename)
     X_input = []
     top=[]
     #directory = "datasets/PSSM_files/singel_FASTAs"
@@ -79,13 +82,13 @@ def train_inputvector_X(directory):
     return np.array(X_input), top
 
 #================input vector topology==============
-def inputvector_y(topology):
+def inputvector_y(filename, directory):
     # dictionary of topology:
     topo = {'H':1, 'S':2, 'C':3}
 
     #final input:
     y_input = []
-    features, topology = train_inputvector_X("datasets/PSSM_files/test_PSSM")
+    features, topology = train_inputvector_X(filename, directory)
     for i in range(len(topology)):
         y_input.append(topo[topology[i]])
 
@@ -96,6 +99,6 @@ def inputvector_y(topology):
 if __name__ == '__main__':
     #result_parser = parse_fasta()
 
-    result_multiple_seq = train_inputvector_X("datasets/PSSM_files/test_PSSM")
+    result_multiple_seq = train_inputvector_X('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', "datasets/PSSM_files/test_PSSM")
 
-    result_input_y = inputvector_y(parse_fasta('datasets/PSSM_files/test_PSSM/PSSM_test.fasta'))
+    result_input_y = inputvector_y('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', "datasets/PSSM_files/test_PSSM",)
