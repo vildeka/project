@@ -28,7 +28,7 @@ def inputvector_X(sequence, window=15):
     vals = np.identity(20, dtype=int)
     keys = list("ACDEFGHIKLMNPQRSTVWY")
     aa_dict = dict(zip(keys, vals.T))
-    aa_dict['0'] = np.zeros(20, dtype=int)
+    aa_dict['0'] = np.zeros(20, dtype=float)
 
 
     #final input:
@@ -80,38 +80,6 @@ def inputvector_y(parse_dict):
            y_vector.append(topo[topology[i]])
 
     return np.array(y_vector)
-#=========================One-hot encoding==============
-# useless shit:
-'''from numpy import argmax
-def one_hot_encoding(filename):
-    df = parse_fasta(filename)
-    one_hot = pd.get_dummies(df['sequence'])
-    print(one_hot)
-    df = df.drop('sequence', axis=1)
-    df.join(one_hot)
-    print(df)
-
-    for column in df:
-        if column == df.loc[0]:
-            print("cool")
-
-    aa = "ACDEFGHIKLMNPQRSTVWY"
-    d
-    aa_to_int = dict((j, i) for i, j in enumerate(aa))
-    int_to_aa = dict((i, j) for i, j in enumerate(aa))
-    print (aa_to_int)
-    #integer_encoded = [aa_to_int[aa] for aa in data]
-    #print(integer_encoded)
-'''
-#https://stackoverflow.com/questions/37292872/how-can-i-one-hot-encode-in-python
-#http://queirozf.com/entries/scikit-learn-pipeline-examples
-# http://queirozf.com/entries/pandas-dataframe-by-example#select-rows-by-index-value
-#=======================================================
-# Import `train_test_split`
-# from sklearn.cross_validation import train_test_split
-
-# Split the `digits` data into training and test sets
-#X_train, X_test, y_train, y_test, images_train, images_test = train_test_split(data, digits.target, digits.images, test_size=0.25, random_state=42)
 
 
 if __name__ == '__main__':
