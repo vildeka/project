@@ -4,6 +4,7 @@ from sklearn.model_selection import cross_val_score
 import matplotlib
 matplotlib.use('Agg')
 import pylab as plt
+import os
 
 
 from dataparser import parse_fasta, inputvector_X, inputvector_y
@@ -34,10 +35,17 @@ for window, scores in results.items():
     result_average[window] = score
 
     plt.errorbar(window, score, color='b', yerr=np.std(scores), marker='o')
-
+    plt.title('Score of Window size')
+    plt.xlabel('Window Size')
+    plt.ylabel('Score')
 print()
 print()
 print (result_average)
+
+
+#cmd = "mkdir ../project/cool"
+#print(cmd)
+#os.system(cmd)
 
 #saves score and plot in respective files:
 writefile = open('../project/results/crossval_output.txt', 'w')
