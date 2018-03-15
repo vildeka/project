@@ -17,7 +17,6 @@ def parse_fasta(filename):
             elif x % 3 == 2:
                 B = line.strip("\n")
                 parse_dict[key] = [A, B]
-    #print(parse_dict)
     return parse_dict
 
 
@@ -68,17 +67,19 @@ def PSSM_X_vector(PSSM_format, window=15):
 
 def train_inputvector_X(filename, directory):
     parse_dict = parse_fasta(filename)
+    print(parse_dict)
     X_input = []
     top=[]
     #directory = "datasets/PSSM_files/singel_FASTAs"
-    for filename in os.listdir(directory):
-        if filename.endswith(".pssm"):
-            os.path.join(directory, filename)
-            file_pssm = os.path.join(directory, filename)
+    for filenames in os.listdir(directory):
+        if filenames.endswith(".pssm"):
+            os.path.join(directory, filenames)
+            file_pssm = os.path.join(directory, filenames)
             #print(file_pssm)
             feature = PSSM_X_vector(PSSM_parser(file_pssm))
-            dict_value = parse_dict[filename[:-11]]
-            top.extend(dict_value[1])
+            X_input.extend(feature)
+            dict_value = parse_dict[filenames[:-11]]
+            top.extend(dict_value[1])        
     return np.array(X_input), top
 
 #================input vector topology==============
@@ -97,8 +98,8 @@ def inputvector_y(filename, directory):
 
 
 if __name__ == '__main__':
-    #result_parser = parse_fasta()
+    result_multiple_seq = train_inputvector_X('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', 'datasets/PSSM_files/test_PSSM')
+    result_input_y = inputvector_y('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', 'datasets/PSSM_files/test_PSSM')
+    #result_multiple_seq = train_inputvector_X('../project/datasets/train_data0.7.txt', '../project/datasets/PSSM_files/train_0.7')
 
-    result_multiple_seq = train_inputvector_X('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', "datasets/PSSM_files/test_PSSM")
-
-    result_input_y = inputvector_y('datasets/PSSM_files/test_PSSM/PSSM_test.fasta', "datasets/PSSM_files/test_PSSM",)
+    #result_input_y = inputvector_y('../project/datasets/train_data0.7.txt', '../project/datasets/PSSM_files/train_0.7')
