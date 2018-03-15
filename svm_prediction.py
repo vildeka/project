@@ -2,9 +2,9 @@ from sklearn import svm
 #from sklearn.model_selection import train_test_split
 import pickle
 import sys
+import collections
 
 from FASTA_to_inputvector import inputvector_X, parse_fasta
-
 
 lenght = len(sys.argv)
 if lenght == 1: 
@@ -16,7 +16,7 @@ elif lenght == 2:
  
 
 # load the model from disk
-model = pickle.load(open('../project/models/mini_win15_model.sav', 'rb'))
+model = pickle.load(open('../project/models/349_random_win15_model.sav', 'rb'))
 
 #converting predicted states from int to str:
 def output_to_topo(result_X):
@@ -32,19 +32,20 @@ def output_to_topo(result_X):
 result_X = []
 #dictionary of identifiers and sequences:
 prot_dict = parse_fasta(input_file)
+#print(prot_dict)
 
-
-out_file = '../project/results/prediction_output.fasta'
+out_file = '../project/results/prediction_50_output.fasta'
 writefile = open(out_file, "w")
-for key in prot_dict:
-    #print(key)
-    #print(prot_dict[key])
+#for sequence, topology in prot_dict.values():
+for key in prot_dict:    
     x_input = list(inputvector_X(prot_dict[key]))
     result = model.predict(x_input)
     result_X.append(result)
     topo = output_to_topo(result_X)
-    #print(topo)
-    writefile.write(key + "\n")
+    print('>'+key)
+    print(prot_dict[key])
+    print(topo)
+    writefile.write('>'+key + "\n")
     writefile.write(prot_dict[key] + "\n")
     writefile.write(topo + "\n")
 
@@ -54,11 +55,7 @@ print ()
 print ('result is to be found in the path:', out_file)
 print ()
 
-#l = list['CSSSSSCCCCCCHHHHHHHHHHHCCCSSSSSCCHHHHHH']
 
-#l = list['CCHHHHHHHHHCCCCCCCCCCCCCSSSCCCSSS']
-
-#l = list['CSSSSSSCCCHHHHHHHHHHHHCCCCSSSSSSSCC']
 
 if __name__ == '__main__':
     result_svm = output_to_topo(result)
