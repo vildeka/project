@@ -2,12 +2,13 @@
 Make a 3-state predictor. 
 
 ## How to run my predictior:<br/>
-You should run the scipt "svm_prediction.py"<br/>
-The script extracts the "model mini_win15_model.sav"<br/>
-and runs the prediction on the file "fastafile.fasta"<br/>
-The prediction is written into a output file called "prediction_output.fasta" which is to be found in the repository folder "results".
+1. Clone my repository
+2. Go into the folder named scripts
+3. Choose which predictor you want to run, PSSM or regular
+4. If you run the script without specifying FASTA-file and/or directory, you will get instructions about this
 
-The script is set up so that you shoulden't have to do anything but clone the repository and run the "svm_prediction.py" script.
+the prediction will be written to the screen and saved in a output file to be found in the "results" folder
+
 
 ## Script description:<br/>
 **dataparser.py**<br/>
