@@ -59,4 +59,3 @@ The last dataset called dataminix2.txt is very small containing only 3 sequences
 
 ## Note on changing windowsize:<br/>
 If you want to change the windowsize, it is important that it is change in all the three places it is beeing specified. Two places in the script dataparser.py and one place in FASTA_to_inputvector.py
-http://biopython.org/DIST/docs/tutorial/Tutorial.html#htoc255
