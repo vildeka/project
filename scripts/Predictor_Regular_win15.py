@@ -16,7 +16,7 @@ elif lenght == 2:
 
 
 # load the model from disk
-model = pickle.load(open('../models/Random_balanced_win15_model.sav', 'rb'))
+model = pickle.load(open('../models/mini_win15_model.sav', 'rb'))
 
 #converting predicted states from int to str:
 def output_to_topo(result_X):
