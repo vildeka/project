@@ -20,7 +20,7 @@ elif lenght == 2:
 
 
 # load the model from disk
-model = pickle.load(open('../models/PSSM_SVM_win15_model.sav', 'rb'))
+model = pickle.load(open('../models/PSSM_win15_model.sav', 'rb'))
 
 #converting predicted states from int to str:
 def output_to_topo(result_X):
