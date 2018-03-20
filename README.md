@@ -1,5 +1,5 @@
 # Project for MTLS
-Make a 3-state predictor. 
+3-state secondary structure predictor. 
 
 ## How to run my predictior:<br/>
 1. Clone my repository
